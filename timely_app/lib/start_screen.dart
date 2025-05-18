@@ -9,31 +9,61 @@ class StartScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            'assets/images/quiz-logo.png',
-            width: 300,
-            color: const Color.fromARGB(67, 255, 255, 255), //Opacity
-          ),
-          SizedBox(height: 30),
-          Text('Learn Flutter the fun way',
+    return Container(
+      color: Colors.white, // Fondo blanco
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Imagen de bienvenida (más grande)
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  width: 2,
+                ),
+              ),
+              child: Image.asset(
+                'assets/images/bienvenida.png',
+                width: 380, // Más grande
+                height: 400, // Más grande
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(height: 30),
+            Text(
+              'Timely',
               style: GoogleFonts.lato(
-                color: const Color.fromARGB(245, 232, 226, 226),
-                fontSize: 24,
+                color: Colors.black,
+                fontSize: 32,
                 fontWeight: FontWeight.bold,
-              )),
-          const SizedBox(height: 30),
-          OutlinedButton.icon(
-              onPressed: () {
-                startQuiz();
-              },
-              style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
-              icon: const Icon(Icons.arrow_right_alt),
-              label: const Text('Start Quiz')),
-        ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'La herramienta perfecta para saber cuando\neres más fuerte, más eficiente y más\nseguro para lograr todo lo que te propones.',
+              style: GoogleFonts.lato(color: Colors.black87, fontSize: 20),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 32),
+            SizedBox(
+              width: 300,
+              height: 48,
+              child: ElevatedButton(
+                onPressed: startQuiz,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFB2DFDB),
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  textStyle: const TextStyle(fontSize: 15),
+                ),
+                child: const Text('Descubre tu mejor momento!'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

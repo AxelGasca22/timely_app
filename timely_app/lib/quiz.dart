@@ -1,8 +1,9 @@
-import 'package:timely_app/data/questions.dart';
 import 'package:flutter/material.dart';
 import 'package:timely_app/start_screen.dart';
 import 'package:timely_app/questions_screen.dart';
 import 'package:timely_app/results_screen.dart';
+import 'package:timely_app/data/questions.dart';
+import 'package:timely_app/why_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -18,6 +19,12 @@ class _QuizState extends State<Quiz> {
   var activeScreen = 'start-screen';
 
   void switchScreen() {
+    setState(() {
+      activeScreen = 'why-screen';
+    });
+  }
+
+  void goToQuiz() {
     setState(() {
       activeScreen = 'questions-screen';
     });
@@ -44,11 +51,11 @@ class _QuizState extends State<Quiz> {
   Widget build(context) {
     Widget screenWidget = StartScreen(switchScreen);
 
-    if (activeScreen == 'questions-screen') {
+    if (activeScreen == 'why-screen') {
+      screenWidget = WhyScreen(onContinue: goToQuiz);
+    } else if (activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
-    }
-
-    if (activeScreen == 'results-screen') {
+    } else if (activeScreen == 'results-screen') {
       screenWidget = ResultsScreen(
         chosenAnswers: selectedAnswers,
         onRestart: restartQuiz,

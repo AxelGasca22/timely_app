@@ -1,43 +1,86 @@
 import 'package:timely_app/models/quiz_questions.dart';
 
 const questions = [
-  QuizQuestion('What are the main building blocks of Flutter UIs?', [
-    'Widgets',
-    'Components',
-    'Blocks',
-    'Functions',
+  QuizQuestion('¿Con cuánta energía te despiertas por la mañana?', [
+    'Sin energía',
+    'Cansado',
+    'Energía suficiente',
+    'Muy enérgico',
   ]),
-  QuizQuestion('How are Flutter UIs built?', [
-    'By combining widgets in code',
-    'By combining widgets in a visual editor',
-    'By defining widgets in config files',
-    'By using XCode for iOS and Android Studio for Android',
-  ]),
-  QuizQuestion('What\'s the purpose of a StatefulWidget?', [
-    'Update UI as data changes',
-    'Update data as UI changes',
-    'Ignore data changes',
-    'Render UI that does not depend on data',
+  QuizQuestion('¿Qué tan rápido sueles empezar tus tareas del día?', [
+    'Tardo mucho',
+    'Me distraigo antes',
+    'Comienzo sin problema',
+    'Con impulso',
   ]),
   QuizQuestion(
-    'Which widget should you try to use more often: StatelessWidget or StatefulWidget?',
-    [
-      'StatelessWidget',
-      'StatefulWidget',
-      'Both are equally good',
-      'None of the above',
-    ],
+    '¿Qué haces cuando te sientes con poca energía durante el trabajo?',
+    ['Evito tareas', 'Rindo poco', 'Cumplo lo esencial', 'Me enfoco más'],
   ),
-  QuizQuestion('What happens if you change data in a StatelessWidget?', [
-    'The UI is not updated',
-    'The UI is updated',
-    'The closest StatefulWidget is updated',
-    'Any nested StatefulWidgets are updated',
+  QuizQuestion(
+    '¿Cuántas veces sientes que te detienes sin razón durante el día?',
+    ['Muchas veces', 'Algunas veces', 'Casi nunca', 'Nunca'],
+  ),
+  QuizQuestion(
+    '¿Qué tan fácil es para ti mantenerte activo en tareas repetitivas?',
+    ['Me rindo', 'Pierdo interés', 'Cumplo', 'Me mantengo constante'],
+  ),
+  QuizQuestion('¿Puedes trabajar durante varias horas sin distracciones?', [
+    'Me cuesta mucho',
+    'Solo a veces',
+    'Generalmente sí',
+    'Siempre',
   ]),
-  QuizQuestion('How should you update data inside of StatefulWidgets?', [
-    'By calling setState()',
-    'By calling updateData()',
-    'By calling updateUI()',
-    'By calling updateState()',
+  QuizQuestion('Cuando tienes un objetivo claro, ¿cómo te enfrentas a él?', [
+    'Me siento abrumado',
+    'Lo intento con dudas',
+    'Trabajo con seguridad',
+    'Me emociona',
+  ]),
+  QuizQuestion('¿Cómo reaccionas si algo sale mal mientras trabajas?', [
+    'Me paralizo',
+    'Me frustro',
+    'Me ajusto',
+    'Aprendo y sigo',
+  ]),
+  QuizQuestion('¿Sientes que aprovechas bien tus mejores horas del día?', [
+    'No lo sé',
+    'A veces',
+    'Sí',
+    'Siempre',
+  ]),
+  QuizQuestion(
+    '¿Qué tan consciente eres de cuándo estás rindiendo al máximo?',
+    ['Nunca', 'Solo después', 'Mientras trabajo', 'Siempre'],
+  ),
+  QuizQuestion('¿Cómo te sientes antes de iniciar una tarea desafiante?', [
+    'Inseguro',
+    'Nervioso',
+    'Preparado',
+    'Emocionado',
+  ]),
+  QuizQuestion('¿Qué piensas de ti mismo cuando cometes errores?', [
+    'Fracaso',
+    'Me juzgo',
+    'Aprendo',
+    'Me impulsa',
+  ]),
+  QuizQuestion('¿Cómo es tu diálogo interno cuando trabajas?', [
+    'Me saboteo',
+    'Dudo',
+    'Me animo',
+    'Me reconozco',
+  ]),
+  QuizQuestion('¿Qué tanto crees en tu capacidad para resolver problemas?', [
+    'No puedo',
+    'Me bloqueo',
+    'Confío',
+    'Muy capaz',
+  ]),
+  QuizQuestion('¿Te sientes con derecho a descansar y disfrutar tus logros?', [
+    'No lo merezco',
+    'Con culpa',
+    'Sí, si lo merezco',
+    'Siempre',
   ]),
 ];

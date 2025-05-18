@@ -10,15 +10,13 @@ class SummaryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isCorrectAnswer =
-        itemData['user_answer'] == itemData['correct_answer'];
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         QuestionIdentifier(
           questionIndex: itemData['question_index'] as int,
-          isCorrectAnswer: isCorrectAnswer,
+          isCorrectAnswer:
+              true, // Siempre true, ya que no hay respuestas correctas/incorrectas
         ),
         const SizedBox(width: 20),
         Expanded(
@@ -39,11 +37,6 @@ class SummaryItem extends StatelessWidget {
                 style: const TextStyle(
                   color: Color.fromARGB(255, 199, 136, 181),
                 ),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                itemData['correct_answer'] as String,
-                style: const TextStyle(color: Color.fromARGB(255, 0, 255, 0)),
               ),
             ],
           ),
