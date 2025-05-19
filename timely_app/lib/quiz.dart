@@ -4,6 +4,7 @@ import 'package:timely_app/questions_screen.dart';
 import 'package:timely_app/results_screen.dart';
 import 'package:timely_app/data/questions.dart';
 import 'package:timely_app/why_screen.dart';
+import 'package:timely_app/auth_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -21,6 +22,12 @@ class _QuizState extends State<Quiz> {
   void switchScreen() {
     setState(() {
       activeScreen = 'why-screen';
+    });
+  }
+
+  void goToAuth() {
+    setState(() {
+      activeScreen = 'auth-screen';
     });
   }
 
@@ -52,7 +59,11 @@ class _QuizState extends State<Quiz> {
     Widget screenWidget = StartScreen(switchScreen);
 
     if (activeScreen == 'why-screen') {
-      screenWidget = WhyScreen(onContinue: goToQuiz);
+      screenWidget = WhyScreen(onContinue: goToAuth);
+    } else if (activeScreen == 'auth-screen') {
+      screenWidget = AuthScreen(
+        onSuccess: goToQuiz,
+      );
     } else if (activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     } else if (activeScreen == 'results-screen') {
