@@ -4,6 +4,7 @@ import 'package:timely_app/quiz.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
+//This is a test
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

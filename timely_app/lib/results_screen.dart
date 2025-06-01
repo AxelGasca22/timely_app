@@ -110,9 +110,8 @@ class ResultsScreen extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color.fromARGB(255, 77, 50, 212), // morado oscuro
-              Color.fromARGB(255, 106, 79, 195), // morado medio
-              Color.fromARGB(255, 153, 124, 206), // morado claro
+              Color.fromARGB(255, 133, 136, 227),
+              Color.fromARGB(255, 230, 231, 244),
             ],
           ),
         ),
@@ -125,8 +124,9 @@ class ResultsScreen extends StatelessWidget {
               Text(
                 '¡Gracias por completar el cuestionario!\n',
                 style: GoogleFonts.lato(
+                  //Espaciado
                   color: Colors.black,
-                  fontSize: 22,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,

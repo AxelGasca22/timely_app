@@ -9,7 +9,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8F6FF), // pastel lila
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
@@ -22,7 +22,7 @@ class AuthScreen extends StatelessWidget {
                 style: GoogleFonts.lato(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.deepPurple,
+                  color: Color(0xFF7C83FD), // pastel azul
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -31,7 +31,7 @@ class AuthScreen extends StatelessWidget {
                 'Para guardar tu progreso y recibir recomendaciones personalizadas, inicia sesión o regístrate.',
                 style: GoogleFonts.lato(
                   fontSize: 17,
-                  color: Colors.black87,
+                  color: Color(0xFF333333),
                   height: 1.5,
                 ),
                 textAlign: TextAlign.center,
@@ -63,7 +63,10 @@ class _AuthFormState extends State<_AuthForm> {
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
-    setState(() { _loading = true; _errorMessage = null; });
+    setState(() {
+      _loading = true;
+      _errorMessage = null;
+    });
     try {
       if (_isLogin) {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -78,9 +81,13 @@ class _AuthFormState extends State<_AuthForm> {
       }
       widget.onSuccess();
     } on FirebaseAuthException catch (e) {
-      setState(() { _errorMessage = e.message; });
+      setState(() {
+        _errorMessage = e.message;
+      });
     } finally {
-      setState(() { _loading = false; });
+      setState(() {
+        _loading = false;
+      });
     }
   }
 
@@ -95,14 +102,22 @@ class _AuthFormState extends State<_AuthForm> {
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(labelText: 'Correo electrónico'),
-            validator: (value) => value != null && value.contains('@') ? null : 'Correo inválido',
+            validator:
+                (value) =>
+                    value != null && value.contains('@')
+                        ? null
+                        : 'Correo inválido',
           ),
           const SizedBox(height: 16),
           TextFormField(
             controller: _passwordController,
             obscureText: true,
             decoration: const InputDecoration(labelText: 'Contraseña'),
-            validator: (value) => value != null && value.length >= 6 ? null : 'Mínimo 6 caracteres',
+            validator:
+                (value) =>
+                    value != null && value.length >= 6
+                        ? null
+                        : 'Mínimo 6 caracteres',
           ),
           if (_errorMessage != null) ...[
             const SizedBox(height: 12),
@@ -112,12 +127,31 @@ class _AuthFormState extends State<_AuthForm> {
           _loading
               ? const CircularProgressIndicator()
               : ElevatedButton(
-                  onPressed: _submit,
-                  child: Text(_isLogin ? 'Iniciar sesión' : 'Registrarse'),
+                onPressed: _submit,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFB2DFDB), // pastel aqua
+                  foregroundColor: const Color(0xFF333333),
+                  minimumSize: const Size(180, 48),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
+                child: Text(_isLogin ? 'Iniciar sesión' : 'Registrarse'),
+              ),
           TextButton(
             onPressed: () => setState(() => _isLogin = !_isLogin),
-            child: Text(_isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'),
+            style: TextButton.styleFrom(
+              foregroundColor: const Color(0xFF7C83FD), // pastel azul
+            ),
+            child: Text(
+              _isLogin
+                  ? '¿No tienes cuenta? Regístrate'
+                  : '¿Ya tienes cuenta? Inicia sesión',
+            ),
           ),
         ],
       ),
