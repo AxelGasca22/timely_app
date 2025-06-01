@@ -39,19 +39,24 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             Text(
               currentQuestion.text,
               style: GoogleFonts.lato(
-                color: const Color.fromARGB(255, 255, 255, 255),
-                fontSize: 24,
+                color: const Color.fromARGB(255, 0, 0, 0),
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 30),
             ...currentQuestion.getShuffledAnswers().map((answer) {
-              return AnswerButton(
-                answerText: answer,
-                onTap: () {
-                  answerQuestion(answer);
-                },
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 13,
+                ), // Espaciado entre botones
+                child: AnswerButton(
+                  answerText: answer,
+                  onTap: () {
+                    answerQuestion(answer);
+                  },
+                ),
               );
             }),
           ],

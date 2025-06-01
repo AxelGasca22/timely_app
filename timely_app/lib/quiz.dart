@@ -61,9 +61,7 @@ class _QuizState extends State<Quiz> {
     if (activeScreen == 'why-screen') {
       screenWidget = WhyScreen(onContinue: goToAuth);
     } else if (activeScreen == 'auth-screen') {
-      screenWidget = AuthScreen(
-        onSuccess: goToQuiz,
-      );
+      screenWidget = AuthScreen(onSuccess: goToQuiz);
     } else if (activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     } else if (activeScreen == 'results-screen') {
@@ -79,8 +77,8 @@ class _QuizState extends State<Quiz> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 65, 21, 142),
-                Color.fromARGB(255, 130, 90, 199),
+                Color.fromARGB(255, 133, 136, 227),
+                Color.fromARGB(255, 230, 231, 244),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
