@@ -13,11 +13,11 @@ class SummaryItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        QuestionIdentifier(
-          questionIndex: itemData['question_index'] as int,
-          isCorrectAnswer:
-              true, // Siempre true, ya que no hay respuestas correctas/incorrectas
-        ),
+        // QuestionIdentifier(
+        //   questionIndex: itemData['question_index'] as int,
+        //   isCorrectAnswer:
+        //       true, // Siempre true, ya que no hay respuestas correctas/incorrectas
+        // ),
         const SizedBox(width: 20),
         Expanded(
           child: Column(
@@ -30,12 +30,28 @@ class SummaryItem extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 5),
-              Text(
-                itemData['user_answer'] as String,
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 166, 29, 127),
+              const SizedBox(height: 8),
+              Center(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF9B9696),
+                    borderRadius: BorderRadius.circular(22),
+                  ),
+                  child: Text(
+                    itemData['user_answer'] as String,
+                    style: GoogleFonts.lato(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ],

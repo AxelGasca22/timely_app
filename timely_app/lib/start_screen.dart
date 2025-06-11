@@ -52,7 +52,7 @@ class StartScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: startQuiz,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFB2DFDB),
+                  backgroundColor: const Color(0xFF3B82F6),
                   foregroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
