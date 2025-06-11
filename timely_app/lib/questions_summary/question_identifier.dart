@@ -20,14 +20,14 @@ class QuestionIdentifier extends StatelessWidget {
       decoration: BoxDecoration(
         color:
             isCorrectAnswer
-                ? const Color.fromARGB(255, 18, 18, 18)
-                : const Color.fromARGB(255, 0, 0, 0),
+                ? const Color.fromARGB(255, 251, 251, 251)
+                : const Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
         questionNumber.toString(),
         style: const TextStyle(
-          color: Colors.white,
+          color: Colors.black,
           fontWeight: FontWeight.bold,
         ),
       ),

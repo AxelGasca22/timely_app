@@ -104,73 +104,126 @@ class ResultsScreen extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Container(
-        // Fondo degradado para toda la pantalla de resultados
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color.fromARGB(255, 133, 136, 227),
-              Color.fromARGB(255, 230, 231, 244),
-            ],
-          ),
-        ),
-        margin: EdgeInsets.all(0), // Quita el margin para aprovechar el espacio
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        color: const Color(0xFFF0F9FF), // Fondo azul pastel muy claro
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              const SizedBox(height: 36),
+              // Título principal
               Text(
                 '¡Gracias por completar el cuestionario!\n',
                 style: GoogleFonts.lato(
-                  //Espaciado
-                  color: Colors.black,
+                  color: const Color(0xFF1A2236),
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               ),
-              Text(
-                'Tu cuadrante actual es:',
-                style: GoogleFonts.lato(
-                  color: Colors.black87,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+              // Tarjeta cuadrante
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                quadrant,
-                style: GoogleFonts.lato(
-                  color: Colors.blueAccent,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF3887FE),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 14,
+                    horizontal: 12,
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Tu cuadrante actual es',
+                        style: GoogleFonts.lato(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'RP: ${scores['rp']!.toStringAsFixed(1)}   AC: ${scores['ac']!.toStringAsFixed(1)}',
+                        style: GoogleFonts.lato(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
-                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 20),
-              Text(
-                'RP: ${scores['rp']!.toStringAsFixed(2)}   AC: ${scores['ac']!.toStringAsFixed(2)}',
-                style: GoogleFonts.lato(fontSize: 18, color: Colors.black87),
+              // Mensaje cuadrante
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 18,
+                ),
+                child: Text(
+                  quadrantMessage,
+                  style: GoogleFonts.lato(
+                    fontSize: 20,
+                    color: const Color(0xFF1A2236),
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              // Tarjeta de respuestas
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF3887FE),
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 24,
+                    horizontal: 12,
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Respuestas',
+                        style: GoogleFonts.lato(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 6),
+                      Container(
+                        height: 2,
+                        width: 300,
+                        color: Colors.white,
+                        margin: const EdgeInsets.symmetric(vertical: 6),
+                      ),
+                      QuestionsSummary(summaryData: summaryData),
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(height: 24),
-              Text(
-                quadrantMessage,
-                style: GoogleFonts.lato(fontSize: 18, color: Colors.black87),
-                textAlign: TextAlign.justify,
-              ),
-              const SizedBox(height: 30),
-              const SizedBox(height: 30),
-              QuestionsSummary(summaryData: summaryData),
-              const SizedBox(height: 30),
               TextButton.icon(
                 onPressed: onRestart,
-                style: TextButton.styleFrom(foregroundColor: Colors.black),
+                style: TextButton.styleFrom(
+                  foregroundColor: const Color(0xFF1A2236),
+                ),
                 icon: const Icon(Icons.refresh),
                 label: const Text('Reiniciar cuestionario'),
               ),
+              const SizedBox(height: 24),
             ],
           ),
         ),
