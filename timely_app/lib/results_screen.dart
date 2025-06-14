@@ -2,6 +2,8 @@ import 'package:timely_app/data/questions.dart';
 import 'package:flutter/material.dart';
 import 'package:timely_app/questions_summary/questions_summary.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:timely_app/recommendation_Page.dart';
+
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
@@ -224,6 +226,49 @@ class ResultsScreen extends StatelessWidget {
                 label: const Text('Reiniciar cuestionario'),
               ),
               const SizedBox(height: 24),
+              TextButton.icon(
+                onPressed: () {
+                  Widget recommendation_Page;
+
+                  switch (quadrant) {
+                    case 'Muerto':
+                      recommendation_Page = const MuertoPage();
+                      break;
+                    case 'Apagado':
+                      recommendation_Page = const ApagadoPage();
+                      break;
+                    case 'Inestable':
+                      recommendation_Page = const InestablePage();
+                      break;
+                    case 'Productivo':
+                      recommendation_Page = const ProductivoPage();
+                      break;
+                    case 'Inicio de Flow':
+                      recommendation_Page = const FlowPage();
+                      break;
+                    case 'Violento':
+                      recommendation_Page = const ViolentoPage();
+                      break;
+                    case 'Perfecto':
+                      recommendation_Page = const PerfectoPage();
+                      break;
+                    default:
+                      recommendation_Page = const DefaultPage();
+                      break;
+                  }
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => recommendation_Page),
+                  );
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: const Color(0xFF1A2236),
+                ),
+                icon: const Icon(Icons.lightbulb),
+                label: const Text('Dame recomendaciones'),
+              ),
+
             ],
           ),
         ),
